@@ -1,16 +1,21 @@
 from .card import Card
-from hand_eval import HandRank
+from .hand_eval import HandRank
 
 class Hand:
-    def __init__(self, player):
-        self.cards = []
+    def __init__(self, player, cards = [], board = []):
+        self.player = player
+        self.cards = cards
+        #score for what type of hand someone has
         self.score = None
-        self.board = []
+        #score for specifically where that hand ranks with other hands
+        # i.e. higher pair vs lower pair
+        self.scoreRank = None
+        self.board = board
         #the 5 cards that matter for the player's hand
         self.cardsInPlay = []
         self.kickers = []
 
-    def add_card(self, card):
+    def dealHand(self, card):
         if isinstance(card, Card):
             self.cards.append(card)
         else:
@@ -21,7 +26,7 @@ class Hand:
         # This should interact with a hand evaluation system or utility
         pass
 
-    def dealCards(boardCards):
+    def dealBoard(boardCards):
         board = board + boardCards
 
 
